@@ -14,12 +14,7 @@ public class ItemRepository {
     private EntityManager em;
 
     public void save(Item item) {
-        if(item.getId() == null) {
-            //현재 아이디가 없다는 것은 새로 등록한 객체임
-            em.persist(item);
-        } else {
-            em.merge(item);
-        }
+        em.persist(item);
     }
 
     public Item findOne(Long id) {

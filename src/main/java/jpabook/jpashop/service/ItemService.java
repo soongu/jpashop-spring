@@ -1,6 +1,9 @@
 package jpabook.jpashop.service;
 
 import java.util.*;
+
+import jpabook.jpashop.controller.BookForm;
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +33,14 @@ public class ItemService {
 
     public Item findOne(Long itemId) {
         return itemRepository.findOne(itemId);
+    }
+
+    @Transactional
+    public void updateItem(Long id, BookForm book) {
+        Item item = itemRepository.findOne(id);
+        item.changeItem(book);
+
+
     }
 }
 

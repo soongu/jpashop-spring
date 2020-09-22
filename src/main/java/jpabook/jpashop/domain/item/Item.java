@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.controller.BookForm;
 import jpabook.jpashop.domain.CategoryItem;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import lombok.Getter;
@@ -39,4 +40,10 @@ public abstract class Item {
         this.stockQuantity = restStock;
     }
 
+    //상품 변경
+    public void changeItem(BookForm book) {
+        this.name = book.getName();
+        this.price = book.getPrice();
+        this.stockQuantity = book.getStockQuantity();
+    }
 }
