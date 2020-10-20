@@ -46,16 +46,22 @@ public class MemberService {
     //회원 전체 조회
     //읽기전용 메서드에는 readOnly를쓰면 성능상 이점이 있다.
     @Transactional(readOnly = true)
-    public List<MemberForm> findMembers() {
+    public List<Member> findMembers() {
         List<Member> members = memberRepository.findAll();
-
-        return members.stream()
-                .map(MemberForm::new)
-                .collect(Collectors.toList());
+        return members;
     }
 
     @Transactional(readOnly = true)
     public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
+    }
+
+    /**
+     * 회원 수정
+     */
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
     }
 }
