@@ -7,11 +7,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     properties:
       hibernate:
 #        show_sql: true
         format_sql: true
+        default_batch_fetch_size: 1000
 
 logging:
   level:
@@ -19,4 +20,4 @@ logging:
     org.hibernate.type: trace
 
 server:
-  port: 8181
+  port: 8182
